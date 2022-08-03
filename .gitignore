@@ -1,0 +1,5 @@
+build
+.vscode
+z_build.sh
+output.png
+models/export.sh
