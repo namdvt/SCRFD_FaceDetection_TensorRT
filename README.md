@@ -66,14 +66,14 @@ Sample output images from <em>scrfd_2.5g_bnkps</em> model
 # Fps measurement
 Inference multiple times for measuring the fps, for example
 ```
-./build/scrfd models/scrfd_2.5g_bnkps_shape640x640.trt test_images/worlds-largest-selfie.jpg 10000
+./build/scrfd models/scrfd_2.5g_bnkps_shape640x640.trt test_images/worlds-largest-selfie.jpg 1000
 ```
-<!-- Results on some Jetson devices:
+Results on some Jetson devices:
 | Model | Jetson Nano  | Jetson Xavier NX  |
 | :---:   | :-: | :-: |
-| scrfd_500m_bnkps | | 51.45 ~ 68.75 |
-| scrfd_2.5g_bnkps | | 48.92 ~ 64.58 |
-| scrfd_10g_bnkps | | 26.11 | -->
+| scrfd_500m_bnkps | 20.23 ~ 21.64 | 58.43 ~ 64.01 |
+| scrfd_2.5g_bnkps | 12.92 ~ 13.58 | 49.69 ~ 58.36 |
+| scrfd_10g_bnkps | 6.00 ~ 6.15 | 25.89 ~ 28.68 |
 
 # References
 - [Sample and Computation Redistribution for Efficient Face Detection](https://arxiv.org/pdf/2105.04714.pdf)
