@@ -47,6 +47,40 @@ Binding Index: 7 (Output) [Name: bbox_32]  | Shape: (1, 8, 20, 20)
 Binding Index: 8 (Output) [Name: kps_32]   | Shape: (1, 20, 20, 20)
 Binding Index: 9 (Output) [Name: score_32] | Shape: (1, 2, 20, 20)
 ```
+They should match with the defined names and shapes in <em>scrfd_trt.h</em>, as
+```
+const char* INPUT_BLOB_NAME = "input.1";
+
+const char* OUTPUT_BBOX_8_BLOB_NAME = "bbox_8";
+const char* OUTPUT_KPS_8_BLOB_NAME = "kps_8";
+const char* OUTPUT_SCORE_8_BLOB_NAME = "score_8";
+
+const char* OUTPUT_BBOX_16_BLOB_NAME = "bbox_16";
+const char* OUTPUT_KPS_16_BLOB_NAME = "kps_16";
+const char* OUTPUT_SCORE_16_BLOB_NAME = "score_16";
+
+const char* OUTPUT_BBOX_32_BLOB_NAME = "bbox_32";
+const char* OUTPUT_KPS_32_BLOB_NAME = "kps_32";
+const char* OUTPUT_SCORE_32_BLOB_NAME = "score_32";
+```
+and
+```
+const int INPUT_H = 640;
+const int INPUT_W = 640;
+const int INPUT_SIZE = 3 * INPUT_W * INPUT_H;
+
+const int OUTPUT_BBOX_8_SIZE = 8 * 80 * 80;
+const int OUTPUT_KPS_8_SIZE = 20 * 80 * 80;
+const int OUTPUT_SCORE_8_SIZE = 2 * 80 * 80;
+
+const int OUTPUT_BBOX_16_SIZE = 8 * 40 * 40;
+const int OUTPUT_KPS_16_SIZE = 20 * 40 * 40;
+const int OUTPUT_SCORE_16_SIZE = 2 * 40 * 40;
+
+const int OUTPUT_BBOX_32_SIZE = 8 * 20 * 20;
+const int OUTPUT_KPS_32_SIZE = 20 * 20 * 20;
+const int OUTPUT_SCORE_32_SIZE = 2 * 20 * 20;
+```
 5. Build 
 ```
 mkdir build
