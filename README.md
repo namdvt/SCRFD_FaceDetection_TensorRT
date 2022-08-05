@@ -16,7 +16,7 @@ by
 ```
 cls_score = cls_score.sigmoid()
 ```
-2. Download ckpt of desired models from https://github.com/deepemight/emightface/blob/master/detection/scrfd/README.md
+2. Download ckpt of desired models from https://github.com/deepinsight/insightface/blob/master/detection/scrfd/README.md
 3. Generate onnx file using <em>scrfd2onnx.py</em>, for example
 ```
 python detection/scrfd/tools/scrfd2onnx.py detection/scrfd/configs/scrfd/scrfd_2.5g_bnkps.py <path_to_ckpt>
@@ -27,12 +27,14 @@ After this step, check the generated onnx file <em>scrfd_2.5g_bnkps_shape640x640
 2. Copy <em>scrfd_2.5g_bnkps_shape640x640.onnx</em> into <em>models</em> folder
 3. Generate the engine
 ```
+alias trtexec="/usr/src/tensorrt/bin/trtexec"
 trtexec --onnx=scrfd_2.5g_bnkps_shape640x640.onnx \
-        --saveEngine=scrfd_2.5g_bnkps_shape640x640.trt 
+        --saveEngine=scrfd_2.5g_bnkps_shape640x640.trt \
+        --fp16
 ```
 4. Verify the generated engine
 ```
-polygraphy empect model scrfd_2.5g_bnkps_shape640x640.trt --model-type=engine
+polygraphy inspect model scrfd_2.5g_bnkps_shape640x640.trt --model-type=engine
 ```
 Check whether the input and output names and shapes are correct
 ```
@@ -102,12 +104,12 @@ Inference multiple times for measuring the fps, for example
 ```
 ./build/scrfd models/scrfd_2.5g_bnkps_shape640x640.trt test_images/worlds-largest-selfie.jpg 1000
 ```
-Results on some Jetson devices:
+<!-- Results on some Jetson devices:
 | Model | Jetson Nano  | Jetson Xavier NX  |
 | :---:   | :-: | :-: |
 | scrfd_500m_bnkps | 20.23 ~ 21.64 | 58.43 ~ 64.01 |
 | scrfd_2.5g_bnkps | 12.92 ~ 13.58 | 49.69 ~ 58.36 |
-| scrfd_10g_bnkps | 6.00 ~ 6.15 | 25.89 ~ 28.68 |
+| scrfd_10g_bnkps | 6.00 ~ 6.15 | 25.89 ~ 28.68 | -->
 
 # References
 - [Sample and Computation Redistribution for Efficient Face Detection](https://arxiv.org/pdf/2105.04714.pdf)
