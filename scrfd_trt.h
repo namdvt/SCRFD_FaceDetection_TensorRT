@@ -71,7 +71,7 @@ class SCRFD_TRT {
         const int OUTPUT_SCORE_32_SIZE = 2 * 20 * 20;
 
         // names
-        const char* INPUT_BLOB_NAME = "image";
+        const char* INPUT_BLOB_NAME = "input.1";
 
         const char* OUTPUT_BBOX_8_BLOB_NAME = "bbox_8";
         const char* OUTPUT_KPS_8_BLOB_NAME = "kps_8";
